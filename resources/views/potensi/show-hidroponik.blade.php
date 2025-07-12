@@ -5,10 +5,13 @@
 @section('title', 'Detail Potensi Hidroponik - Dusun Jlegongan')
 
 @push('styles')
+    {{-- Menambahkan link CSS untuk Swiper.js (slider) dan Font Awesome (ikon) --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-    /* Style di halaman ini sama dengan halaman detail potensi lainnya agar konsisten */
+    /* Style umum untuk halaman ini, dibuat konsisten dengan halaman lain */
     .page-container {
-        max-width: 1152px;
+        max-width: 900px;
         margin: auto;
         padding: 0 2.4rem;
     }
@@ -16,29 +19,38 @@
         padding: 4.8rem 0;
     }
 
-    /* === HEADER HALAMAN DETAIL === */
+    /* === HEADER HALAMAN DETAIL (PENYESUAIAN) === */
     .detail-header {
         text-align: left;
-        margin-bottom: 3.2rem;
+        margin-bottom: 2.5rem;
     }
     .detail-header .sub-judul {
-        color: #114661;
-        font-weight: 600;
-        margin-bottom: 0.4rem;
+        color: #F5D364;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
     .detail-header .judul-utama {
-        font-size: 4rem;
-        font-weight: 800;
+        font-size: 2.8rem;
+        font-weight: 700;
         color: #114661;
         line-height: 1.2;
     }
 
-    /* === GAMBAR UTAMA === */
+    /* === GAMBAR UTAMA (PENYESUAIAN DENGAN SLIDER) === */
     .main-image-container {
         position: relative;
-        border-radius: 1.6rem;
+        border-radius: 12px;
         overflow: hidden;
-        max-height: 450px;
+        width: 100%;
+        height: 400px; /* Ukuran gambar dibuat lebih pendek */
+        background-color: #e0e0e0;
+    }
+    .main-image-container .swiper,
+    .main-image-container .swiper-wrapper,
+    .main-image-container .swiper-slide {
+        width: 100%;
+        height: 100%;
     }
     .main-image-container img {
         width: 100%;
@@ -46,39 +58,47 @@
         display: block;
         object-fit: cover;
     }
-    .main-image-pagination {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 0.8rem;
+
+    /* Style untuk dot pagination Swiper */
+    .main-image-container .swiper-pagination {
+        bottom: 1.5rem !important;
     }
-    .pagination-dot {
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
+    .main-image-container .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
         background-color: white;
-        opacity: 0.5;
+        opacity: 0.6;
+        transition: all 0.3s ease;
     }
-    .pagination-dot.active {
+    .main-image-container .swiper-pagination-bullet-active {
         opacity: 1;
+        background-color: #F5D364;
+        width: 25px;
+        border-radius: 5px;
     }
 
-    /* === KONTEN DESKRIPSI === */
+    /* === KONTEN DESKRIPSI (PENYESUAIAN) === */
     .description-content {
         padding: 3.2rem 0;
-        font-size: 1.6rem;
+        font-size: 1.1rem;
         line-height: 1.8;
         color: #333;
     }
     .description-content p {
-        margin-bottom: 1.6rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
     }
 
-    /* === VIDEO TERKAIT === */
-    .video-terkait-container { margin-top: 3.2rem; }
-    .video-terkait-container h4 { font-size: 2.8rem; font-weight: 700; color: #114661; margin-bottom: 2.4rem; }
+    /* === VIDEO TERKAIT (PENYESUAIAN) === */
+    .video-terkait-container {
+        margin-top: 2rem;
+    }
+    .video-terkait-container h4 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #114661;
+        margin-bottom: 2.4rem;
+    }
     .video-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -89,16 +109,71 @@
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    .video-card { border-radius: 1.2rem; overflow: hidden; background-color: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
-    .video-thumbnail { position: relative; display: block; }
-    .video-thumbnail img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; }
-    .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
-    .video-card:hover .play-icon { transform: translate(-50%, -50%) scale(1.1); }
-    .play-icon svg { width: 24px; height: 24px; fill: #114661; }
-    .video-info { padding: 1.6rem; }
-    .video-title { font-size: 1.6rem; font-weight: 600; color: #114661; margin: 0 0 0.8rem 0; }
-    .video-channel { font-size: 1.3rem; color: #52525b; }
-
+    .video-card {
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+    .video-card:hover {
+        transform: translateY(-5px);
+    }
+    .video-thumbnail {
+        position: relative;
+    }
+    .video-thumbnail img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+    }
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+    }
+    .video-card:hover .play-icon {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    .play-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: #114661;
+    }
+    .video-info {
+        padding: 1.6rem;
+    }
+    .video-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #114661;
+        margin: 0 0 0.8rem 0;
+    }
+    .video-channel {
+        font-size: 0.9em;
+        color: #52525b;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .video-channel .fa-youtube {
+        color: red;
+        font-size: 1.2em;
+    }
 </style>
 @endpush
 
@@ -110,16 +185,25 @@
             <!-- ===== Header Halaman Detail ===== -->
             <div class="detail-header">
                 <p class="sub-judul">Hidroponik</p>
-                <h2 class="judul-utama">Hidroponik: Solusi Pertanian Modern Menginspirasi Generasi Muda</h2>
+                <h2 class="judul-utama">Solusi Pertanian Modern Menginspirasi Generasi Muda</h2>
             </div>
             
-            <!-- ===== Gambar Utama ===== -->
+            <!-- ===== Gambar Utama (Slider) ===== -->
             <div class="main-image-container">
-                <img src="{{ asset('images/potensi/hidroponik-hero.jpg') }}" alt="Perkebunan Hidroponik di Jlegongan" onerror="this.onerror=null;this.src='https://placehold.co/1152x450/cccccc/333333?text=Gambar+Utama';">
-                <div class="main-image-pagination">
-                    <span class="pagination-dot active"></span>
-                    <span class="pagination-dot"></span>
-                    <span class="pagination-dot"></span>
+                <div class="swiper main-image-swiper">
+                    <div class="swiper-wrapper">
+                        {{-- Ganti dengan gambar-gambar Hidroponik yang relevan --}}
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/potensi/hidroponik1.jpg') }}" alt="Pertanian Hidroponik 1" onerror="this.onerror=null;this.src='https://placehold.co/1152x400/9b5de5/ffffff?text=Gambar+1';">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/potensi/hidroponik2.jpg') }}" alt="Pertanian Hidroponik 2" onerror="this.onerror=null;this.src='https://placehold.co/1152x400/9b5de5/ffffff?text=Gambar+2';">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/potensi/hidroponik3.jpg') }}" alt="Pertanian Hidroponik 2" onerror="this.onerror=null;this.src='https://placehold.co/1152x400/9b5de5/ffffff?text=Gambar+2';">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
 
@@ -132,35 +216,77 @@
                     Ibu Sri memulai usahanya dengan menanam beragam sayuran hidroponik di halaman depan rumahnya. Krisis moneter membawanya untuk kembali ke bercocok tanam, ia mengembangkan hobinya dari rumah. Kini, ia menjual berbagai produk, mulai dari bibit cabai hingga peralatan hidroponik seperti netpot dan rockwool. Pengalamannya meluas hingga ke berbagai wilayah, termasuk luar Jawa, seperti Lampung, melalui jaringan grup hidroponik online. Sejak memulai usahanya pada tahun 2018, ia telah berhasil menjual lebih dari 10.000 bibit tanaman.
                 </p>
                 <p>
-                   Selain berbisnis, Ibu Sri membuka peluang belajar bagi mahasiswa. Salah satu kelompok mahasiswa dari Akademi Pertanian Yogyakarta (APTA) bahkan berhasil mengembangkan pertanian melon hidroponik di Green House miliknya. Dengan pengalaman 14–20 tahun dalam dunia hidroponik, mahasiswa tersebut merasa senang dan terinspirasi untuk mengaplikasikan ilmu mereka di masa depan, terutama karena mereka melihat pertanian sebagai sektor yang menjanjikan.
+                    Selain berbisnis, Ibu Sri membuka peluang belajar bagi mahasiswa. Salah satu kelompok mahasiswa dari Akademi Pertanian Yogyakarta (APTA) bahkan berhasil mengembangkan pertanian melon hidroponik di Green House miliknya. Dengan pengalaman 14–20 tahun dalam dunia hidroponik, mahasiswa tersebut merasa senang dan terinspirasi untuk mengaplikasikan ilmu mereka di masa depan, terutama karena mereka melihat pertanian sebagai sektor yang menjanjikan.
                 </p>
             </div>
 
             <!-- ===== Dokumentasi Video Terkait ===== -->
-            <div>
-                <h3 class="video-terkait-container">Video terkait</h3>
+            <div class="video-terkait-container">
+                <h4>Video terkait</h4>
                 <div class="video-grid">
-                    <a href="https://www.youtube.com/watch?v=xxxxxxxx" target="_blank" rel="noopener noreferrer" class="video-card">
-                        <div class="video-thumbnail">
-                            <img src="{{ asset('images/potensi/video-hidroponik-1.jpg') }}" alt="Thumbnail Video 1" onerror="this.onerror=null;this.src='https://placehold.co/400x225/cccccc/333333?text=Video+1';">
-                            <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-                        </div>
-                        <div class="video-info"><div class="video-title">Bisnis Hidroponik Menguntungkan dan Banyak Dicari...</div><div class="video-channel">Youtube Chanel</div></div>
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=yyyyyyyy" target="_blank" rel="noopener noreferrer" class="video-card">
-                         <div class="video-thumbnail">
-                            <img src="{{ asset('images/potensi/video-hidroponik-2.jpg') }}" alt="Thumbnail Video 2" onerror="this.onerror=null;this.src='https://placehold.co/400x225/cccccc/333333?text=Video+2';">
-                            <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-                        </div>
-                        <div class="video-info"><div class="video-title">Ibu Rumah Tangga Kreatif, Berhidroponik di Halaman Rumah</div><div class="video-channel">Youtube Chanel</div></div>
-                    </a>
+                    @php
+                        // Data ini sebaiknya disiapkan di Controller
+                        if (!isset($video_terkait_hidroponik)) {
+                            $video_terkait_hidroponik = [
+                                (object)['url' => 'https://youtu.be/2MzjH4ZDKeA?si=K-J4PYX2FczvWyOv', 'title' => 'Bisnis Hidroponik Menguntungkan dan Banyak Peminat', 'channel_name' => 'Anggit Lili'],
+                                (object)['url' => 'https://youtu.be/psgAstueCN4?si=1A6Jh_7n-o9Bc2e2', 'title' => 'Ibu Rumah Tangga Kreatif, Ber-Hidroponik di Halaman Rumah', 'channel_name' => 'TANI JUARA']
+                            ];
+                        }
+                    @endphp
+                    @forelse($video_terkait_hidroponik as $video)
+                        @php
+                            $video_id = '';
+                            $url_parts = parse_url($video->url);
+                            if (isset($url_parts['host']) && str_contains($url_parts['host'], 'youtu.be')) {
+                                $video_id = ltrim($url_parts['path'], '/');
+                            } elseif (isset($url_parts['query'])) {
+                                parse_str($url_parts['query'], $query_params);
+                                if (isset($query_params['v'])) { $video_id = $query_params['v']; }
+                            }
+                            $thumbnail_url = "https://img.youtube.com/vi/{$video_id}/hqdefault.jpg";
+                        @endphp
+                        <a href="{{ $video->url }}" target="_blank" rel="noopener noreferrer" class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="{{ $thumbnail_url }}" alt="Thumbnail untuk {{ $video->title }}" onerror="this.onerror=null;this.src='https://placehold.co/400x225/cccccc/333333?text=Video';">
+                                <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+                            </div>
+                            <div class="video-info">
+                                <div class="video-title">{{ $video->title }}</div>
+                                <div class="video-channel">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    <span>{{ $video->channel_name }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    @empty
+                        <p>Tidak ada video terkait untuk ditampilkan.</p>
+                    @endforelse
                 </div>
             </div>
 
         </section>
     </div>
 
-    {{-- Memberi jarak di bagian paling bawah halaman --}}
-    <div style="margin-bottom: 6.4rem;"></div>
-
 @endsection
+
+@push('scripts')
+{{-- Menambahkan script untuk Swiper.js --}}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mainImageSwiper = new Swiper('.main-image-swiper', {
+            loop: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+</script>
+@endpush

@@ -1,13 +1,17 @@
 <?php
 
+
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\DemografiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-
-// --- CONTROLLER YANG KITA GUNAKAN ---
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilDusunController;
 use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\BeritaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +20,8 @@ use App\Http\Controllers\PengurusController;
 */
 
 // --- RUTE HALAMAN DEPAN ---
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 
+    [ProfilDusunController::class, 'index'])->name('home');
 
 
 // --- RUTE PROFIL & STRUKTUR ---
@@ -29,6 +32,14 @@ Route::get('/struktur-pengurus', [PengurusController::class, 'index'])->name('pe
 // --- RUTE POTENSI ---
 Route::get('/potensi/umkm', [PotensiController::class, 'umkm'])->name('potensi.umkm');
 Route::get('/potensi/pertanian', [PotensiController::class, 'pertanian'])->name('potensi.pertanian');
+Route::get('potensi/show-pertanian', [PotensiController::class, 'showPertanianSawah'])->name('potensi.show-pertanian');
+Route::get('/potensi/show-lidah-buaya', [PotensiController::class, 'showLidahBuaya'])->name('potensi.show-lidah-buaya');
+Route::get('/potensi/show-hidroponik', [PotensiController::class, 'showHidroponik'])->name('potensi.show-hidroponik');
+Route::get('/potensi/masyarakat', [PotensiController::class, 'masyarakat'])->name('potensi.masyarakat');
+
+
+// --- RUTE PRODUK ---
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 
 
 // --- RUTE UNTUK TESTING DATABASE (Boleh dihapus nanti) ---
@@ -52,5 +63,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// --- RUTE BERITA ---
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+// Rute untuk menampilkan satu berita berdasarkan slug-nya
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
+
+
+// --- RUTE DEMOGRAFI ---
+Route::get('/demografi', [DemografiController::class, 'index'])->name('demografi.index');
+
+// --- RUTE AGENDA ---
+Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
+
 
 require __DIR__.'/auth.php';

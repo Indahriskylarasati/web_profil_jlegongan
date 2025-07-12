@@ -1,0 +1,167 @@
+     .hero-section {
+            position: relative;
+            height: 50vh; 
+            min-height: 24rem; 
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .hero-section .swiper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .hero-section .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5); 
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 70rem;
+        }
+        .hero-content h1 { 
+            font-size: clamp(1.5rem, 4vw, 2rem); 
+            font-weight: 600; 
+        }
+        .hero-content h2 { 
+            font-size: clamp(2.5rem, 6vw, 3rem); 
+            font-weight: 800; 
+            margin: 0.5rem 0;
+         }
+        .hero-content p { 
+            font-size: clamp(1rem, 2.5vw, 1.25rem); 
+            font-weight: 400; 
+            line-height: 1.7; 
+            opacity: 0.9; 
+            max-width: 60rem; 
+            margin: auto; 
+        }
+        
+        /* Style untuk bulatan pagination slider */
+        .hero-section .swiper-pagination { 
+            bottom: 1rem; 
+            position: absolute; 
+        }
+        .hero-section .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.6);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        .hero-section .swiper-pagination-bullet-active {
+            background-color: #F5D364;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* === KARTU DATA & GRAFIK === */
+        .demografi-section {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 2.5rem; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 2.5rem;
+        }
+        .section-heading { 
+            text-align: center; 
+            margin-bottom: 2.5rem; 
+        }
+        .section-heading-title { 
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            color: #1f2937; 
+        }
+        .section-heading-description { 
+            font-size: 1rem; 
+            color: #6b7280; 
+            margin-top: 0.5rem;
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        .chart-wrapper {
+            position: relative;
+            max-width: 900px; 
+            width: 100%;
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        /* Tampilan Kartu Statistik */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        .stat-card { 
+            background-color: #f9fafb; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 0.75rem; 
+            padding: 1.5rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 1.5rem; 
+        }
+        .stat-card-icon { 
+            font-size: 2rem; 
+            color:  #F5D364; 
+            width: 40px; 
+            text-align: center; 
+        }
+        .stat-card-info { text-align: left; }
+        .stat-card-value { font-size: 2rem; 
+            font-weight: 700; 
+            color: #114661;
+         }
+        .stat-card-label { 
+            font-size: 0.9rem; 
+            color: #6b7280; 
+        }
+        
+        /* Tampilan Kartu Agama */
+        .agama-card { 
+            background-color: #f9fafb; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 0.75rem; 
+            padding: 1.5rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 1.5rem; 
+        }
+        .agama-card-icon { 
+            font-size: 2.5rem; 
+            color: #114661; 
+            width: 50px; 
+            text-align: center; 
+        }
+        
+        /* Analisis */
+        .chart-summary { 
+            margin-top: 1.5rem; 
+            padding: 1rem; 
+            background-color: #f9fafb; 
+            border-left: 4px solid #F5D364; 
+            font-size: 0.9rem; 
+            color: #4b5563; 
+            line-height: 1.6; 
+        }
+        .chart-summary strong { 
+            font-weight: 600; 
+            color: #111827; 
+        }

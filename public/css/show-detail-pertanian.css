@@ -1,0 +1,80 @@
+ .page-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 0 2.4rem;
+    }
+    .content-section {
+        padding: 4.8rem 0;
+    }
+
+    /* === HEADER HALAMAN DETAIL === */
+    .detail-header {
+        text-align: left;
+        margin-bottom: 2.5rem;
+    }
+    .detail-header .sub-judul {
+        color:  #F5D364;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .detail-header .judul-utama {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #114661;
+        line-height: 1.2;
+    }
+
+    /* === GAMBAR UTAMA (PENYESUAIAN) === */
+    .main-image-container {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        width: 100%;
+        /* PERUBAHAN: Tinggi kontainer diperkecil */
+        height: 400px; 
+        background-color: #e0e0e0;
+    }
+    .main-image-container .swiper,
+    .main-image-container .swiper-wrapper,
+    .main-image-container .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+    .main-image-container img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* Memastikan gambar tetap proporsional */
+    }
+
+    /* Style untuk dot pagination Swiper */
+    .main-image-container .swiper-pagination {
+        bottom: 1.5rem !important; /* Posisi dot */
+    }
+    .main-image-container .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+    }
+    .main-image-container .swiper-pagination-bullet-active {
+        opacity: 1;
+        background-color: #F5D364; /* Warna kuning untuk dot aktif */
+        width: 25px; /* Dot aktif dibuat memanjang */
+        border-radius: 5px;
+    }
+
+
+    /* === KONTEN DESKRIPSI === */
+    .description-content {
+        padding: 3.2rem 0;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+    }
+    .description-content p {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }

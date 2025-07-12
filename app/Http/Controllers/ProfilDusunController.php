@@ -25,4 +25,21 @@ class ProfilDusunController extends Controller
         // agar bisa digunakan di file profil_dusun/index.blade.php
         return view('profil_dusun.index', compact('pratinjauPengurus'));
     }
+
+     public function showStrukturPengurus()
+    {
+        // Ambil data dan kelompokkan berdasarkan jabatan
+        $kepalaDusun = Pengurus::where('jabatan', 'Kepala Dusun')->first();
+        $ketuaRW = Pengurus::where('jabatan', 'Ketua RW')->get();
+        $ketuaRT = Pengurus::where('jabatan', 'Ketua RT')->get();
+
+        // Ambil pengurus lainnya yang bukan jabatan inti
+        $jabatanInti = ['Kepala Dusun', 'Ketua RW', 'Ketua RT'];
+        $pengurusLain = Pengurus::whereNotIn('jabatan', $jabatanInti)->get();
+
+        // Kirim semua data yang sudah dipisah ke view
+        return view('profil_dusun.struktur_pengurus', compact(
+        'kepalaDusun', 'ketuaRW', 'ketuaRT', 'pengurusLain'
+    ));
+    }
 }

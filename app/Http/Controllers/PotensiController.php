@@ -18,10 +18,58 @@ class PotensiController extends Controller
         // file view yang ada di: /resources/views/potensi/index.blade.php
         return view('potensi.pertanian');
     }
-    public function showPertanianSawah(): View
+      public function pertanian()
     {
-        // Kode ini akan mencari file view di:
-        // /resources/views/potensi/show-pertanian.blade.php
+        $heroData = [
+        'judul' => 'Potensi Pertanian',
+        'subjudul' => 'Kekayaan Alam dari Tanah Jlegongan',
+        'deskripsi' => 'Lahan yang subur dan sistem irigasi yang baik memungkinkan warga untuk menanam padi, palawija, hingga komoditas unggulan seperti lidah buaya dan tanaman hidroponik.'
+        ];
+
+        // 1. Siapkan data untuk video Lidah Buaya
+        $video_lidah_buaya = [
+            (object)[
+                'url' => 'https://youtu.be/eTeUZ9qaRZ8?si=cGoIL8mPAYjIN2j4',
+                'title' => 'Lidah Buaya Sekali Tanam Bisa Panen Selama 10 Tahun, Permintaan Pasar & Harga Sangat Tinggi',
+                'channel_name' => 'CapCapung'
+            ],
+            (object)[
+                'url' => 'https://youtu.be/RVD7uSKEWmo?si=4CuphKAagNzTlT-J',
+                'title' => 'BUDIDAYA LIDAH BUAYA SEKALI TANAM PENGHASILANNYA JANGKA PANJANG',
+                'channel_name' => 'Ronarene VLOG'
+            ],
+            (object)[
+                'url' => 'https://youtu.be/iifP2hj0RXg?si=H2XFgMUrwDACzhv1',
+                'title' => 'Budidaya Lidah Buaya, Potensi Gagal Cuma 5%, Bisa Panen Terus Menerus',
+                'channel_name' => 'TVBisnis'
+            ]
+        ];
+
+        // 2. Siapkan data untuk video Hidroponik
+        $video_hidroponik = [
+            (object)[
+                'url' => 'https://youtu.be/2MzjH4ZDKeA?si=K-J4PYX2FczvWyOv',
+                'title' => 'Bisnis Hidroponik Menguntungkan dan Banyak Peminat',
+                'channel_name' => 'Anggit Lili'
+            ],
+            (object)[
+                'url' => 'https://youtu.be/psgAstueCN4?si=1A6Jh_7n-o9Bc2e2',
+                'title' => 'Ibu Rumah Tangga Kreatif, Ber-Hidroponik di Halaman Rumah',
+                'channel_name' => 'TANI JUARA'
+            ]
+        ];
+
+        // Karena halaman ini statis (tidak mengambil data dari database),
+        // kita hanya perlu mengembalikan view-nya saja.
+        return view('potensi.pertanian', [
+            'video_terkait_lidah_buaya' => $video_lidah_buaya,
+            'video_terkait_hidroponik' => $video_hidroponik,
+        ]);
+    }
+    
+     public function showPertanianSawah()
+    {
+        
         return view('potensi.show-pertanian');
     }
     public function showLidahBuaya(): View
@@ -66,5 +114,10 @@ class PotensiController extends Controller
         'produks' => $filtered_produk,
         'kategori_list' => $semua_kategori
     ]);
+    }
+
+    public function masyarakat()
+    {
+        return view('potensi.masyarakat');
     }
 }

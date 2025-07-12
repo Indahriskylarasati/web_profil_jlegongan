@@ -1,0 +1,270 @@
+      /* === STRUKTUR & PEMISAH=== */
+        .page-container { 
+            max-width: 1152px; 
+            margin: auto; 
+            padding: 0 2.4rem; 
+        }
+        .section-divider { 
+            border: 0; 
+            height: 4px; 
+            background-color: #e5e7eb; 
+            margin: 3rem 0; 
+        }
+        .section-title { 
+            font-size: 2rem; /* 32px */
+            font-weight: 700; 
+            color: #114661; 
+            text-align: left; 
+            margin-bottom: 0.4rem; 
+        }
+        .section-subtitle { 
+            font-size: 1rem; 
+            text-align: left; 
+            color: #52525b; 
+            margin-top: 0; 
+            margin-bottom: 2.8rem; 
+            max-width: 600px; 
+        }
+
+        /* === HERO SECTION=== */
+        .hero-section-container { padding: 2.4rem; }
+        .hero-section {
+            position: relative;
+            height: 50vh; /* Sedikit lebih tinggi */
+            min-height: 24rem; 
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            border-radius: 1.5rem; /* Dibuat lebih landai */
+        }
+        
+        .hero-section .swiper { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; }
+        .hero-section .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 70rem; }
+        .hero-content h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; }
+        .hero-content h2 { font-size: clamp(2.5rem, 6vw, 3rem); font-weight: 800; margin: 0.5rem 0; }
+        .hero-content p { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 400; line-height: 1.7; opacity: 0.9; max-width: 60rem; margin: auto; }
+
+        /* SLIDER */
+        .hero-section .swiper-pagination { 
+            bottom: 1rem; 
+            position: absolute; 
+        }
+        .hero-section .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color:rgba(255, 255, 255, 0.6);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        .hero-section .swiper-pagination-bullet-active {
+            background-color: #F5D364;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* === DESKRIPSI SECTION === */
+        .deskripsi-section { 
+            background-color: #114661; 
+            color: white; padding: 3.5rem; 
+            border-radius: 2.4rem; 
+            text-align: center; 
+            margin-bottom: 3rem; 
+            margin-top: 3.5rem;
+        }
+        .deskripsi-section h2 { 
+            font-size: 2rem; 
+            font-weight: 700; margin-top: 0; margin-bottom: 1.5rem; 
+        }
+        .deskripsi-section p { 
+            font-size: 1rem; /* 16px */
+            line-height: 1.7; opacity: 0.85; margin: 0; 
+        }
+
+        /* === SAMBUTAN SECTION === */
+        .sambutan-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 3.2rem; 
+            align-items: center; 
+        }
+
+        @media(min-width: 768px) { .sambutan-grid { grid-template-columns: 1fr 2fr; gap: 4.8rem; } }
+        .sambutan-foto-card { 
+            position: relative; 
+            max-width: 320px; 
+            width: 100%; 
+            margin: auto; 
+            border-radius: 1.6rem; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); 
+            color: white; 
+        }
+        .sambutan-foto-card img { 
+            width: 100%; 
+            height: auto; 
+            aspect-ratio: 4 / 5; 
+            object-fit: cover; 
+            display: block; 
+        }
+        .sambutan-foto-overlay { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            text-align: center; 
+            padding: 4rem 1.6rem 2rem; 
+            background: linear-gradient(to top, #114661 10%, transparent 90%); 
+        }
+        .sambutan-foto-nama { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+        }
+        .sambutan-foto-jabatan { 
+            font-size: 1.4rem; 
+            opacity: 0.8; 
+        }
+        .sambutan-teks { 
+            max-height: 22rem; 
+            overflow-y: auto; 
+            padding-right: 1rem; 
+        }
+        .sambutan-teks h2 { 
+            font-size: 2rem; 
+            font-weight: 700;
+            margin-top: 0; 
+            margin-bottom: 1.6rem; 
+        }
+        .sambutan-teks p { 
+            font-size: 1rem; /* 16px */
+            line-height: 1.8; 
+            margin-bottom: 1.6rem; 
+        }
+        .sambutan-teks .keterangan-kadus { 
+            margin-top: 2.4rem; 
+            font-style: italic; 
+            opacity: 0.9; 
+        }
+
+        /* === POTENSI SECTION CARD === */
+        .potensi-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        .potensi-card { 
+            background-color: #f0f0f0; 
+            border-radius: 2rem; 
+            padding: 2rem;
+            text-align: center; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+        .potensi-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); 
+        }
+        .potensi-card h3 { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            color: #114661; 
+            margin-top: 1.6rem; 
+            margin-bottom: 0.8rem; 
+        }
+        .potensi-card p { 
+            font-size: 1rem; /* 16px */
+            line-height: 1.6; opacity: 0.8; margin: 0; 
+        }
+        .potensi-icon { 
+            width: 64px; 
+            height: 64px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === PETA SECTION  === */
+        .peta-iframe { 
+            width: 100%; 
+            height: 31.25rem;  
+            border:0; 
+            border-radius: 1.6rem; 
+            filter: grayscale(0.3); 
+        }
+
+        /* === STOK SECTION === */ 
+        .stok-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.4rem; 
+            justify-items: center; 
+            align-items: start; 
+        }
+        @media (min-width: 992px) { .stok-grid { grid-template-columns: repeat(4, 1fr); } }
+        .stok-card { 
+            position: relative; 
+            max-width: 320px; 
+            width: 100%;  
+            margin: auto; 
+            border-radius: 1.6rem; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); 
+            color: white;  
+        }
+        .stok-card img {
+            width: 100%; 
+            height: auto; 
+            aspect-ratio: 4 / 5; 
+            object-fit: cover; 
+            display: block;
+        }
+        .stok-card-overlay { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            text-align: center; 
+            padding: 4rem 1.6rem 2rem; 
+            background: linear-gradient(to top, #114661 10%, transparent 90%); 
+        }
+        .stok-nama { 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+        }
+        .stok-jabatan { 
+            font-size: 0.8rem; 
+            opacity: 0.8; 
+            font-style: italic;
+        }
+        .stok-link-container { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #f0f4f8; 
+            padding: 2rem; 
+            border-radius: 1.6rem; 
+            height: 100%; 
+            text-align: center; 
+            min-height: 17.5rem; 
+        }
+        .stok-link-container p { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            color: #114661; 
+            margin: 0 0 1.2rem 0; 
+        }
+        .stok-button { 
+            background-color: #F5D364; 
+            color: #181823; 
+            padding: 0.5rem 0.5rem; 
+            border-radius: 0.5rem; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: background-color 0.3s; 
+            display: inline-block; 
+        }
+        .stok-button:hover { background-color: #eac650; }

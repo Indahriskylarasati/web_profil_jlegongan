@@ -1,133 +1,181 @@
 /* File: public/css/potensi-umkm.css */
-
-/* Mengambil beberapa style dasar dari halaman lain agar konsisten */
-.page-container { max-width: 1152px; margin: auto; padding: 0 2.4rem; }
-.hero-section-container { padding: 2.4rem;
+.page-container { 
+    max-width: 72rem; /* 1200px / 16 */
+    margin: 0 auto;
+    padding: 1.25rem; /* 20px / 16 */
 }
 
-.hero-section {
-    position: relative;
-    height: 45vh; /* Diubah dari 70vh menjadi 45vh */
-    min-height: 350px; /* Diubah dari 500px menjadi 350px */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', sans-serif;
-    overflow: hidden;
-    border-radius: 2.4rem;
-}
-    
-.hero-section .swiper { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; }
-.hero-section .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+ /* === STRUKTUR HALAMAN POTENSI PERTANIAN === */
+    .page-container { max-width: 1152px; margin: auto; padding: 0 2.4rem; }
+    .hero-section-container { padding: 2.4rem; }
 
-.hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 70rem; }
-.hero-content h1 { font-size: 2.4rem; /* 36px */ font-weight: 600; line-height: 1.2; margin-bottom: 0.8rem; /* 8px */  }
-.hero-content h2 { font-size: 3.2rem; /* 36px */ font-weight: 750; line-height: 1.2; margin-bottom: 0.8rem; /* 8px */ }
-.hero-content p { font-size: 1.6rem; /* 16px */ font-weight: 400; line-height: 1.7; opacity: 0.9; max-width: 60rem; /* 600px */ margin: auto }
+        /* ... HERO SECTION ... */
+        .hero-section {
+            position: relative;
+            height: 50vh; /* Sedikit lebih tinggi */
+            min-height: 24rem; 
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        
+        .hero-section .swiper { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; }
+        .hero-section .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
 
-.hero-section .swiper-pagination { bottom: 2rem; }
-.hero-section .swiper-pagination-bullet { width: 1rem; height: 1rem; background-color: #F5D364; opacity: 0.7; transition: all 0.3s ease; margin: 0 0.5rem !important; }
-.hero-section .swiper-pagination-bullet-active { background-color: #114661; width: 2.5rem; border-radius: 0.5rem; opacity: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 70rem; }
+        .hero-content h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; }
+        .hero-content h2 { font-size: clamp(2.5rem, 6vw, 3rem); font-weight: 800; margin: 0.5rem 0; }
+        .hero-content p { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 400; line-height: 1.7; opacity: 0.9; max-width: 60rem; margin: auto; }
 
-.sub-nav-container { text-align: center; margin: 3.2rem 0; display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap; }
-.sub-nav-button { padding: 1rem 2.4rem; font-size: 1.6rem; font-weight: 600; border-radius: 1.2rem; text-decoration: none; transition: all 0.3s; border: 2px solid transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 0.8rem; }
-.sub-nav-button.active { background-color: #114661; color: white; border-color: #114661; }
-.sub-nav-button.inactive { background-color: #F5D364; color: #114661; border-color: #F5D364; }
-.sub-nav-button:hover { transform: translateY(-2px); }
-.sub-nav-button.inactive:hover { background-color: #114661; color: white; border-color: #114661; }
+        /* PERBAIKAN STYLE PAGINATION (BULATAN) SLIDER */
+        .hero-section .swiper-pagination { bottom: 1rem; position: absolute; }
+        .hero-section .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color:rgba(255, 255, 255, 0.6);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        .hero-section .swiper-pagination-bullet-active {
+            background-color: #F5D364;
+            width: 30px;
+            border-radius: 5px;
+        }
+   
+
+    /* === NAVIGASI SUB-MENU POTENSI === */
+    .sub-nav-container { 
+        text-align: center; 
+        margin: 2.4rem 0; 
+        display: flex; 
+        gap: 1.6rem; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+    }
+    .sub-nav-button { 
+        padding: 0.8rem 2.4rem; 
+        font-size: 1.4rem; 
+        font-weight: 600; 
+        border-radius: 1.2rem; text-decoration: none; transition: all 0.3s;
+        border: 2px solid transparent; 
+        cursor: pointer; 
+    }
+    .sub-nav-button.active { background-color: #F5D364; color: #114661; border-color: #F5D364; }
+    .sub-nav-button.inactive { background-color: white; color: #114661; border-color: #e5e7eb; }
+    .sub-nav-button:hover { transform: translateY(-2px); }
+    .sub-nav-button.inactive:hover { background-color: white; color: black; border-color: #F5D364; }
+
+
 
 /* === STYLE SPESIFIK UNTUK KONTEN UMKM === */
-.umkm-content-section { padding-top: 3.2rem; }
-
-/* Judul Awal */
+.umkm-content-section { padding-top: 3rem; }
 .umkm-header-title {
     text-align: center;
-    margin-bottom: 2.5rem; /* Memberi jarak ke filter bar di bawahnya */
+    margin-bottom: 2.5rem; 
 }
 
 .umkm-subtitle {
-    color: #F5D364; /* Warna kuning khas website Anda */
+    color: #F5D364;
     font-weight: 800;
-    font-size: 2.4rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
     margin-top: 0;
 }
 
 .umkm-main-title {
-    color: #114661; /* Warna biru tua khas website Anda */
+    color:  #114661;
     font-weight: 700;
-    font-size: 3.8rem;
+    font-size: 2.25rem;
     margin: 0;
 }
 
 /* Filter dan Pencarian */
 .filter-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap; 
+    gap: 1rem;
     margin-bottom: 4rem;
-    gap: 2rem;
-    flex-wrap: wrap;
 }
 .search-container {
-    flex-grow: 1; /* Membuat search bar mengisi ruang */
+    flex: 3 1 300px; 
     display: flex;
     align-items: center;
     background-color: white;
-    border-radius: 0.8rem;
-    padding: 0 1.5rem;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border-radius: 0.5rem;
 }
-.search-container i { color: #94a3b8; }
+.category-container {
+    flex: 1 1 300px;
+}
+
+.search-container i { 
+    color: #94a3b8;
+    padding-left: 1rem;
+}
+
 .search-input {
-    width: 100%; border: none; outline: none;
-    padding: 1.2rem 1rem; font-size: 1.6rem;
+    width: 100%;
+    border: none;
+    outline: none;
     background-color: transparent;
+    font-size: 0.9rem; 
+    padding: 0.75rem 1rem; 
 }
+
 .category-dropdown {
-    padding: 1.2rem 1.5rem; border-radius: 0.8rem;
-    border: 1px solid #e2e8f0; background-color: white;
-    font-size: 1.6rem; cursor: pointer;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    width: 100%;
+    border-radius: 0.5rem; 
+    cursor: pointer;
+
+    /* === UBAH WARNA DI BAGIAN INI === */
+    background-color: white; 
+    border: 1px solid #e2e8f0; 
+    color:  #94a3b8; 
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
 }
 
 /* Grid Kartu Produk */
-.product-grid {
+.umkm-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 .card-umkm {
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    background: white;
+    border-radius: 0.75rem;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 .card-umkm:hover {
-    transform: translateY(-8px);
+    transform: translateY(-0.5rem);
     box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
-/* Bagian Gambar */
+
 .card-umkm-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
-    position: relative;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     background-color: #f3f4f6;
+    align-items: center;
+    justify-content: center;
 }
 .card-umkm-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Agar gambar tidak gepeng */
+    object-fit: cover; 
 }
 .placeholder-image {
     width: 100%;
     height: 100%;
-    display: none; /* Sembunyi secara default */
+    display: none; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -140,42 +188,48 @@
 
 /* Bagian Konten Teks */
 .card-umkm-content {
-    padding: 1.5rem;
-    flex-grow: 1; /* Membuat bagian ini mengisi ruang kosong */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
 }
 .card-umkm-category {
     display: inline-block;
-    background-color: #f5d364; /* Warna kuning khas */
+    background-color: #f5d364; 
     color: #114661;
     padding: 0.3rem 1rem;
     border-radius: 99px;
-    font-size: 1.2rem;
+    font-size: 0.875rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
 .card-umkm-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #114661;
-    margin: 0 0 0.5rem 0;
+    color:  #111827;
+    margin: 0.25rem;
 }
 .card-umkm-owner {
-    font-size: 1.4rem;
+    font-size: 0.75rem; 
+    font-style: italic;
     color: #6b7280;
-    margin: 0 0 1.5rem 0;
+    margin-bottom: 0.75rem;
 }
 .card-umkm-description {
-    font-size: 1.4rem;
+    font-size: 0.875rem; 
     color: #374151;
-    line-height: 1.6;
+    line-height: 1.5;
+    flex-grow: 1; 
+    margin-bottom: 1rem;
 }
 
 /* Bagian Footer Kartu */
 .card-umkm-footer {
-    padding: 1.5rem;
+    padding: 1.2rem;
     border-top: 1px solid #f3f4f6;
     display: flex;
     justify-content: center;
+    margin-top: auto
 }
 .card-umkm-button {
     display: inline-flex;
@@ -184,8 +238,8 @@
     background-color: #114661;
     color: white;
     text-align: center;
-    padding: 1.2rem 2rem;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.3s;
@@ -195,46 +249,56 @@
     background-color: #0d3a4a;
 }
 .card-umkm-button i {
-    margin-right: 0.8rem;
+    margin-right: 0.5rem;
 }
 
 
 /* Pagination */
-.pagination-links {
+.pagination-container {
     margin-top: 4rem;
+    width: 100%;
 }
 
 .pagination {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
+    margin: 0;
+    gap: 0.5rem; 
 }
 
-.page-item .page-link {
+.page-link {
+    display: block;
+    min-width: 40px; 
+    text-align: center;
     color: #114661;
-    padding: 0.8rem 1.5rem;
-    margin: 0 0.3rem;
+    padding: 0.75rem 1rem;
     border: 1px solid #dee2e6;
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.2s;
+    font-weight: 600;
 }
 
+/* Style saat tombol di-hover (yang tidak aktif) */
+.page-item:not(.active) .page-link:hover {
+    background-color: #f0f4f8;
+    border-color: #c9d5e0;
+}
+
+/* Style untuk tombol yang sedang aktif */
 .page-item.active .page-link {
     background-color: #114661;
     color: white;
     border-color: #114661;
-    z-index: 3;
-}
-
-.page-item:not(.active) .page-link:hover {
-    background-color: #f8f9fa;
+    z-index: 2;
 }
 
 .page-item.disabled .page-link {
-    color: #6c757d;
+    color: #9ca3af;
     pointer-events: none;
-    background-color: #fff;
-    border-color: #dee2e6;
+    background-color: #f9fafb;
 }

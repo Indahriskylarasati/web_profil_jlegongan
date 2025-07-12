@@ -1,72 +1,59 @@
-{{-- ================================================================= --}}
-{{--        KODE LENGKAP UNTUK resources/views/potensi/umkm.blade.php    --}}
-{{-- ================================================================= --}}
-
 @extends('layouts.app')
-
 @section('title', 'Potensi UMKM - Dusun Jlegongan')
-
 @push('styles')
-    {{-- Memanggil file CSS yang sudah kita buat --}}
     <link rel="stylesheet" href="{{ asset('css/potensi-umkm.css') }}">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
     {{-- Font Awesome untuk ikon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endpush
 
 @section('content')
-<div class="umkm-page-wrapper">
-    {{-- Hero Section untuk Halaman Potensi --}}
+    <!-- ===== SATUAN 2: HERO SECTION ===== -->
     <div class="hero-section-container">
         <section class="hero-section">
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{{ asset('images/hero/gambar1.jpg') }}" alt="Pemandangan Dusun 1" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/2E3A87/FFFFFF?text=Latar+Belakang+1';"></div>
-                    <div class="swiper-slide"><img src="{{ asset('images/potensi/pertanian-sawah.jpg') }}" alt="Pemandangan Dusun 2" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/4A55A2/FFFFFF?text=Latar+Belakang+2';"></div>
-                    <div class="swiper-slide"><img src="{{ asset('images/potensi/lidah-buaya.jpg') }}" alt="Pemandangan Dusun 3" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/7895CB/FFFFFF?text=Latar+Belakang+3';"></div>
+                    <div class="swiper-slide"><img src="{{ asset('images/hero/WhatsApp Image 2025-06-26 at 16.39.14_9bdcf63b.jpg') }}" alt="Pemandangan Dusun 1" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/2E3A87/FFFFFF?text=Gambar+1+Tidak+Ditemukan';"></div>
+                    <div class="swiper-slide"><img src="{{ asset('images/hero/umkm.PNG') }}" alt="Aktivitas Warga Dusun" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/4A55A2/FFFFFF?text=Gambar+2+Tidak+Ditemukan';"></div>
+                    <div class="swiper-slide"><img src="{{ asset('images/hero/WhatsApp Image 2025-06-26 at 16.39.14_0b450e07.jpg') }}" alt="Potensi Alam Dusun" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/7895CB/FFFFFF?text=Gambar+3+Tidak+Ditemukan';"></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
             <div class="hero-content">
                 <h1>Potensi</h1>
-                <h2>Sumber daya Dusun Jlegongan</h2>
-                <p>Dusun Jlegongan menyimpan beragam potensi yang layak dikembangkan, hasil alam yang melimpah, tenaga kerja lokal yang terampil, hingga semangat wirausaha yang tumbuh di tengah masyarakat. Mari bergandengan tangan membangun sinergi bersama demi masa depan dusun yang mandiri dan berdaya saing.</p>
+                <h2>Sumber Daya Dusun Jlegongan</h2>
+                <p>Dusun Jlegongan menyimpan beragam potensi yang layak dikembangkan, hasil alam yang melimpah, tenaga kerja lokal yang terampil, hingga semangat wirausaha yang tumbuh di tengah masyarakat.</p>
             </div>
         </section>
     </div>
 
-    {{-- KONTEN UTAMA HALAMAN --}}
     <div class="page-container">
-        {{-- NAVIGASI SUB-MENU --}}
+        {{-- Navigasi Sub-menu Potensi --}}
         <nav class="sub-nav-container">
-            {{-- Tombol Potensi Pertanian dengan ikon daun --}}
             <a href="{{ route('potensi.pertanian') }}" class="sub-nav-button inactive">
                 <i class="fa-solid fa-seedling"></i> Potensi Pertanian
             </a>
-
-            {{-- Tombol Potensi UMKM dengan ikon toko --}}
+            
+            {{-- Navigasi sub-menu UMKM --}}
             <a href="{{ route('potensi.umkm') }}" class="sub-nav-button active">
                 <i class="fa-solid fa-store"></i> Potensi UMKM
             </a>
 
-            {{-- Tombol Potensi Masyarakat dengan ikon orang --}}
-            <a href="#" class="sub-nav-button inactive">
+            {{-- Navigasi sub-menu Masyarakat --}}
+            <a href="{{ route('potensi.masyarakat') }}" class="sub-nav-button inactive">
                 <i class="fa-solid fa-users"></i> Potensi Masyarakat
             </a>
         </nav>
 
-        {{-- BAGIAN UTAMA KONTEN UMKM --}}
+
+        {{-- KONTEN UMKM --}}
         <section class="umkm-content-section">
-        
-            {{-- ↓↓↓ TAMBAHKAN BLOK KODE INI ↓↓↓ --}}
             <div class="umkm-header-title">
                 <p class="umkm-subtitle">Yuk kepoin !</p>
                 <h2 class="umkm-main-title">UMKM Berkembang di Dusun Jlegongan</h2>
             </div>
             
-            {{-- FORM UNTUK FILTER DAN PENCARIAN --}}
+            {{-- FORM UNTUKKATEGORI DAN PENCARIAN --}}
             <form action="{{ route('potensi.umkm') }}" method="GET" class="filter-bar">
                 <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -84,62 +71,85 @@
                 </div>
             </form>
 
-            {{-- GRID PRODUK UMKM (DINAMIS DARI DATABASE) --}}
-            <div class="product-grid">
-            @if($produks->isEmpty())
-                <p>Belum ada data UMKM yang cocok dengan pencarian/kategori Anda.</p>
-            @else
-                @foreach ($produks as $produk)
-                    {{-- STRUKTUR KARTU BARU --}}
+            <div class="umkm-grid">
+                @forelse($produks as $produk)
                     <div class="card-umkm">
-                        {{-- BAGIAN GAMBAR --}}
                         <div class="card-umkm-image">
-                            {{-- Ini akan menampilkan foto_utama, atau gambar placeholder jika fotonya kosong --}}
-                            <img src="{{ asset('storage/' . ($produk->foto_utama ?? 'placeholder.png')) }}" ... >
-                            {{-- Ini adalah placeholder yang<img akan muncul jika gambar tidak ditemukan --}}
-                            <div class="placeholder-image">
-                                <i class="fa-solid fa-camera"></i>
-                                <span>Foto Segera Hadir</span>
-                            </div>
+                            @if($produk->foto_utama)
+                                <img src="{{ asset('storage/' . $produk->foto_utama) }}" alt="{{ $produk->jenis_usaha }}">
+                            @else
+                                <div class="placeholder-image">
+                                    <i class="fa-solid fa-camera"></i>
+                                    <span>Foto Segera Hadir</span>
+                                </div>
+                            @endif
                         </div>
-
-                        {{-- BAGIAN KONTEN TEKS --}}
                         <div class="card-umkm-content">
                             <span class="card-umkm-category">{{ $produk->kategori }}</span>
                             <h3 class="card-umkm-title">{{ $produk->jenis_usaha }}</h3>
                             <p class="card-umkm-owner">Oleh: {{ $produk->nama_pemilik }}</p>
-                            
-                            {{-- Deskripsi hanya akan tampil jika ada isinya di database --}}
-                            @if($produk->deskripsi)
-                            <p class="card-umkm-description">{{ $produk->deskripsi }}</p>
-                            @else
-                            <p class="card-umkm-description">Deskripsi untuk produk ini akan segera ditambahkan.</p>
-                            @endif
+                            <p class="card-umkm-description">
+                                {{ $produk->deskripsi ?? 'Deskripsi untuk produk ini akan segera ditambahkan.' }}
+                            </p>
                         </div>
-
-                        {{-- BAGIAN FOOTER (TOMBOL WA) --}}
                         <div class="card-umkm-footer">
                             @if($produk->nomor_wa)
-                                <a href="https://wa.me/{{ $produk->nomor_wa }}" class="card-umkm-button" target="_blank" rel="noopener noreferrer">
+                                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $produk->nomor_wa) }}" class="card-umkm-button" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-whatsapp"></i> Hubungi Penjual
+                                </a>
+                            @else
+                                <a href="#" class="card-umkm-button" style="background-color: #9ca3af; cursor: not-allowed;">
                                     <i class="fa-brands fa-whatsapp"></i> Hubungi Penjual
                                 </a>
                             @endif
                         </div>
                     </div>
-                @endforeach
-            @endif
+                @empty
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <p>Belum ada data UMKM yang cocok dengan pencarian/kategori Anda.</p>
+                    </div>
+                @endforelse
             </div>
 
-            {{-- LINK PAGINATION (PENOMORAN HALAMAN) --}}
-            <div class="pagination-links">
-                {{ $produks->appends(request()->query())->links() }}
+
+             {{-- LINK PAGINATION (PENOMORAN HALAMAN) --}}
+            <div class="pagination-container">
+                @if ($produks->hasPages())
+                    <ul class="pagination">
+                        {{-- Tombol "Previous" --}}
+                        @if ($produks->onFirstPage())
+                            <li class="page-item disabled"><span class="page-link">&lsaquo;</span></li>
+                        @else
+                            <li class="page-item"><a class="page-link" href="{{ $produks->previousPageUrl() }}">&lsaquo;</a></li>
+                        @endif
+
+                        {{-- Loop untuk Nomor Halaman --}}
+                        @for ($page = 1; $page <= $produks->lastPage(); $page++)
+                            @if ($page == $produks->currentPage())
+                                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $produks->url($page) }}">{{ $page }}</a></li>
+                            @endif
+                        @endfor
+
+                        {{-- Tombol "Next" --}}
+                        @if ($produks->hasMorePages())
+                            <li class="page-item"><a class="page-link" href="{{ $produks->nextPageUrl() }}">&rsaquo;</a></li>
+                        @else
+                            <li class="page-item disabled"><span class="page-link">&rsaquo;</span></li>
+                        @endif
+                    </ul>
+                @endif
             </div>
+                
+        </div> 
+
             
         </section>
     </div>
 
-    {{-- Memberi jarak di bagian paling bawah halaman --}}
-    <div style="margin-bottom: 6.4rem;"></div>
+    {{-- Jarak bagian paling bawah halaman --}}
+    <div style="margin-bottom: 2.5rem;"></div>
 </div>
 @endsection
 
